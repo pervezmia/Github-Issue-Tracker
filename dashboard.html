@@ -15,13 +15,13 @@
 </head>
 
 <body>
-    <!-- <header>
+    <header>
         <nav>
             <div class="navbar bg-base-100 shadow-sm w-11/12 mx-auto flex justify-between p-9 rounded-lg">
-                <div class="flex items-center gap-5">
+                <div class="md:flex md:justify-start md:items-center gap-5">
                     <img class="w-[36px] h-[36px]" src="./assets/github-logo.png" alt="">
                     <a class="font-bold text-2xl">Github-Issue-Tracker</a>
-                </div>        
+                </div>
                 <div class="flex gap-2">
                     <input type="text" placeholder="Search" class="input input-bordered w-24 md:w-auto" />
                     <div>
@@ -32,22 +32,171 @@
             </div>
         </nav>
     </header>
-   
-    
-    <section class="w-9/12 mx-auto my-10">
-        <div class="navbar bg-base-100 shadow-sm w-11/12 mx-auto flex justify-between p-9 rounded-lg">
-                <div>
-                    <button class="btn btn-primary">New Issue</button>
-                    <button class="btn btn-base-100">New Issue</button>
-                    <button class="btn btn-base-100">New Issue</button>
-                </div>
-            </div>
-    </section> -->
 
-    
-    
+
+    <!-- btn section -->
+    <section class="w-9/12 mx-auto my-2">
+        <div class="navbar bg-base-100 shadow-sm w-11/12 mx-auto flex justify-between p-9 rounded-lg">
+            <div>
+                <button class="btn btn-primary">All</button>
+                <button class="btn btn-base-100">Open</button>
+                <button class="btn btn-base-100">Closed</button>
+            </div>
+        </div>
+    </section>
+
+
+    <section class="w-9/12 mx-auto my-1">
+        <div
+            class="bg-base-100 shadow-sm w-11/12 mx-auto flex justify-between items-center p-9 rounded-lg rounded-b-none">
+            <div class="">
+
+                <div class="flex items-center gap-5">
+                    <div class="bg-[#ECE4FF] p-3 rounded-full">
+                        <img class="w-[27px] h-[27px]" src="./assets/Aperture.png" alt="">
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-2xl">50 Issues</h3>
+                        <p>Track and manage your project issues</p>
+                    </div>
+                </div>
+
+            </div>
+            <div class="flex flex-col sm:flex-row justify-between items-center gap-3">
+                <div class="flex items-center justify-center gap-2">
+                    <img src="./assets/Open-Status.png" alt="">
+                    <p>Open</p>
+                </div>
+                <div class="flex items-center justify-center gap-2">
+                    <img src="./assets/Closed- Status .png" alt="">
+                    <p>Open</p>
+                </div>
+
+            </div>
+        </div>
+        <hr class="text-neutral-300 w-11/12 mx-auto">
+    </section>
+    <section class="w-9/12 mx-auto my-0 ">
+        <div class="bg-base-100 shadow-sm w-11/12 mx-auto rounded-b-xl">
+            <div class="grid grid-cols-1 sm:grid-cols-3 p-5 gap-5">
+                <!-- card -->
+                <div class="card bg-base-100 shadow-sm">
+
+                    <div class="card-body">
+                        <div class="flex justify-between items-center">
+                            <img src="./assets/Open-Status.png" alt="">
+                            <div class="badge badge-warning">
+                                Warning
+                            </div>
+                        </div>
+                        <h2 class="card-title">Fix navigation menu on mobile devices</h2>
+                        <p class="line-clamp-2">The navigation menu doesn't collapse properly on mobile devices The navigation menu doesn't collapse properly on mobile devices</p>
+                        <div class="flex flex-col md:flex-row sm:justify-start gap-2.5">
+                            <div class="badge badge-warning">
+                                Warning
+                            </div>
+                            <div class="badge badge-warning">
+                                Warning
+                            </div>
+                        </div>
+                        
+                    </div>
+                    <hr class="text-base-300">
+                    <div class="card-body rounded-2xl">
+                        <p>#1 by john_doe</p>
+                        <p>07/03/2024</p>
+                    </div>
+                </div>
+                <div class="card bg-base-100 shadow-sm">
+
+                    <div class="card-body">
+                        <div class="flex justify-between items-center">
+                            <img src="./assets/Open-Status.png" alt="">
+                            <div class="badge badge-warning">
+                                Warning
+                            </div>
+                        </div>
+                        <h2 class="card-title">Fix navigation menu on mobile devices</h2>
+                        <p class="line-clamp-2">The navigation menu doesn't collapse properly on mobile devices The navigation menu doesn't collapse properly on mobile devices</p>
+                        <div class="flex flex-col md:flex-row sm:justify-start gap-2.5">
+                            <div class="badge badge-warning">
+                                Warning
+                            </div>
+                            <div class="badge badge-warning">
+                                Warning
+                            </div>
+                        </div>
+                        
+                    </div>
+                    <hr class="text-base-300">
+                    <div class="card-body rounded-2xl">
+                        <p>#1 by john_doe</p>
+                        <p>07/03/2024</p>
+                    </div>
+                </div>
+                <div class="card bg-base-100 shadow-sm">
+
+                    <div class="card-body">
+                        <div class="flex justify-between items-center">
+                            <img src="./assets/Open-Status.png" alt="">
+                            <div class="badge badge-warning">
+                                Warning
+                            </div>
+                        </div>
+                        <h2 class="card-title">Fix navigation menu on mobile devices</h2>
+                        <p class="line-clamp-2">The navigation menu doesn't collapse properly on mobile devices The navigation menu doesn't collapse properly on mobile devices</p>
+                        <div class="flex flex-col md:flex-row sm:justify-start gap-2.5">
+                            <div class="badge badge-warning">
+                                Warning
+                            </div>
+                            <div class="badge badge-warning">
+                                Warning
+                            </div>
+                        </div>
+                        
+                    </div>
+                    <hr class="text-base-300">
+                    <div class="card-body rounded-2xl">
+                        <p>#1 by john_doe</p>
+                        <p>07/03/2024</p>
+                    </div>
+                </div>
+                <div class="card bg-base-100 shadow-sm">
+
+                    <div class="card-body">
+                        <div class="flex justify-between items-center">
+                            <img src="./assets/Open-Status.png" alt="">
+                            <div class="badge badge-warning">
+                                Warning
+                            </div>
+                        </div>
+                        <h2 class="card-title">Fix navigation menu on mobile devices</h2>
+                        <p class="line-clamp-2">The navigation menu doesn't collapse properly on mobile devices The navigation menu doesn't collapse properly on mobile devices</p>
+                        <div class="flex flex-col md:flex-row sm:justify-start gap-2.5">
+                            <div class="badge badge-warning">
+                                Warning
+                            </div>
+                            <div class="badge badge-warning">
+                                Warning
+                            </div>
+                        </div>
+                        
+                    </div>
+                    <hr class="text-base-300">
+                    <div class="card-body rounded-2xl">
+                        <p>#1 by john_doe</p>
+                        <p>07/03/2024</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
+
     <script src="./js/dashboard.js"></script>
-    <!--issues count and issues indicator-->  <!-- btn section -->
+    <!--issues count and issues indicator-->
 </body>
 
 </html>
