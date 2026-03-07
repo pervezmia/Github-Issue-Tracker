@@ -24,14 +24,14 @@
             <fieldset class="fieldset bg-base-200 border-base-300 rounded-box  border p-4 mx-auto">
 
                 <label class="label font-black">Username</label>
-                <input type="text" class="input w-full" placeholder="Enter Username" />
+                <input id="userNameInput" type="text" class="input w-full" placeholder="Enter Username" value="admin"/>
                 <p class="text-sm text-primary font-semibold">Default: admin</p>
 
                 <label class="label font-black">Password</label>
-                <input type="password" class="input w-full" placeholder="Enter Your Password" />
+                <input id="userPasswordInput" type="password" class="input w-full" placeholder="Enter Your Password" value="admin123" />
                 <p class="text-sm text-primary font-semibold">Default: admin123</p>
 
-                <button class="btn btn-primary mt-4">Sign In</button>
+                <button id="signInBtn" class="btn btn-primary mt-4">Sign In</button>
             </fieldset>
         </section>
         <div class="px-10 w-full flex flex-col">
@@ -46,6 +46,7 @@
         </div>
     </section>
 
+    <script src="./js/index.js"></script>
 </body>
 
 </html>
