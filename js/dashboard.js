@@ -33,7 +33,7 @@ const loadAllData = async () => {
     renderingAllData(data.data);
 }
 
-/* show card in browser */
+/* show card in browser by js*/
 const renderingAllData = async (allData) => {
     
     allData.forEach(item => {
@@ -86,11 +86,11 @@ const renderingAllData = async (allData) => {
     })
 }
 
-// const loadingShow = () => {
-//     loadingSnipper.classList.remove("hidden");
-// }
-// const loadingHide = () => {
-//     loadingSnipper.classList.add("hidden");
-// }
+const loadingShow = () => {
+    loadingSnipper.classList.remove("hidden");
+}
+const loadingHide = () => {
+    loadingSnipper.classList.add("hidden");
+}
 
 loadAllData();
