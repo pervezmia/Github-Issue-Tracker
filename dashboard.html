@@ -37,7 +37,7 @@
     <!-- btn section -->
     <section class="w-9/12 mx-auto my-2">
         <div class="navbar bg-base-100 shadow-sm w-11/12 mx-auto flex justify-between p-9 rounded-lg">
-            <div>
+            <div id="btn-container">
                 <button onclick="activeBtn('all-btn')" id="all-btn" class="dynamicBtn btn btn-primary">All</button>
                 <button onclick="activeBtn('open-btn')" id="open-btn" class="dynamicBtn btn btn-base-100">Open</button>
                 <button onclick="activeBtn('close-btn')" id="close-btn" class="dynamicBtn btn btn-base-100">Closed</button>
@@ -56,7 +56,7 @@
                         <img class="w-[27px] h-[27px] object-cover" src="./assets/Aperture.png" alt="">
                     </div>
                     <div>
-                        <h3 class="font-bold text-2xl"><span id="total-issue">50</span> Issues</h3>
+                        <h3 class="font-bold text-2xl"><span id="total-issue"></span> Issues</h3>
                         <p>Track and manage your project issues</p>
                     </div>
                 </div>

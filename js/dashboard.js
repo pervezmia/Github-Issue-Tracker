@@ -6,14 +6,37 @@ const loadingSnipper = document.getElementById("loadingSnipper");
 
 const cardContainer = document.getElementById("card-container");
 
- /* active btn */
+
+const btnContainer = document.getElementById("btn-container");
+const allIssues = [];
+
+btnContainer.addEventListener("click", (e)=> {
+    console.log(e.target.innerText);
+    const text = e.target.innerText.toLowerCase();
+    if(text === "all"){
+        renderingAllData(allIssues);
+    }
+    if(text === "open"){
+        const openData = allIssues.filter(item => item.status === "open");
+        // console.log(openData);
+        renderingAllData(openData);
+    }
+    if(text === "closed"){
+        const closeData = allIssues.filter(item =>item.status === "closed");
+        // console.log(closeData);
+        renderingAllData(closeData);
+    }
+})
+
+
+/* active btn */
 const activeBtn = (id) => {
     const dynamicBtns = document.querySelectorAll(".dynamicBtn");
     // console.log(dynamicBtns);
     dynamicBtns.forEach(item => {
         item.classList.remove("btn-primary");
         item.classList.add("btn-base-100");
-
+        
     });
     const currentActiveBtn = document.getElementById(id);
     currentActiveBtn.classList.add("btn-primary");
@@ -22,6 +45,7 @@ const activeBtn = (id) => {
 }
 activeBtn("all-btn");
 
+
 /* all data fetch */
 
 const loadAllData = async () => {
@@ -29,25 +53,39 @@ const loadAllData = async () => {
     const res = await fetch("https://phi-lab-server.vercel.app/api/v1/lab/issues");
     const data = await res.json();
     loadingHide();
-    console.log(data.data);
-    renderingAllData(data.data);
+    // allIssues = data.data;
+    allIssues.push(...data.data);
+    console.log(allIssues);
+    // console.log(sobIssues);
+    renderingAllData(allIssues);
+    
 }
+
 
 /* show card in browser by js*/
 const renderingAllData = async (allData) => {
-    
+    cardContainer.innerHTML = "";
+    totalIssue.innerText = allData.length ;
+    // console.log(totalIssue);
     allData.forEach(item => {
+        // console.log(item);
+        const labels = [];
+        labels.push(...item.labels);
+        // console.log(labels);
+        const div = document.createElement("div");
+        div.classList = "flex flex-warp gap-4"
+
+        labels.forEach(label => {
+            const btn = document.createElement("div");
+            btn.classList = "badge badge-warning";
+            btn.innerHTML = label;
+            // console.log(btn);
+            div.appendChild(btn);
+        })
+
         const card = document.createElement("div");
         card.className = "card bg-base-100 shadow-sm ";
-        if(item.status === "open"){
-            card.className = "border-green-500";
-            
-        } else {
-            card.className  = "border-green-500"
-            
-        }
-        console.log(item.status);
-        // console.log(item.priority);
+        
         card.innerHTML = `
                 <div class="card bg-base-100 shadow-sm border-t-5 ${item.status === "open" ? "border-green-500": "border-violet-500"}">
 
@@ -60,12 +98,13 @@ const renderingAllData = async (allData) => {
                         </div>
                         <h2 class="card-title">${item.title}</h2>
                         <p class="line-clamp-2">${item.description}</p>
-                        <div class="flex flex-col md:flex-row sm:justify-start gap-2.5">
-                            <div class="badge badge-warning">
+                        <div class="flex flex-col">
+                            <div class="badge badge-warning mb-3">
                                 ${item.status}
                             </div>
-                            <div class="badge badge-warning">
-                                Warning
+                            <div class="labels-container">
+                                
+                                
                             </div>
                         </div>
                         
@@ -82,6 +121,7 @@ const renderingAllData = async (allData) => {
                         </div>
                     </div>
         `
+        card.querySelector(".labels-container").appendChild(div);
         cardContainer.appendChild(card);
     })
 }
@@ -92,5 +132,6 @@ const loadingShow = () => {
 const loadingHide = () => {
     loadingSnipper.classList.add("hidden");
 }
+
 
 loadAllData();
