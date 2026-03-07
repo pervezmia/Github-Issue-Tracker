@@ -23,7 +23,7 @@
                     <a class="font-bold text-2xl">Github-Issue-Tracker</a>
                 </div>
                 <div class="flex gap-2">
-                    <input type="text" placeholder="Search" class="input input-bordered w-24 md:w-auto" />
+                    <input type="text" placeholder="Search" class="input input-bordered w-24 md:w-auto"/>
                     <div>
 
                         <button class="btn btn-primary"><i class="fa-solid fa-plus"></i>New Issue</button>
@@ -38,9 +38,9 @@
     <section class="w-9/12 mx-auto my-2">
         <div class="navbar bg-base-100 shadow-sm w-11/12 mx-auto flex justify-between p-9 rounded-lg">
             <div>
-                <button class="btn btn-primary">All</button>
-                <button class="btn btn-base-100">Open</button>
-                <button class="btn btn-base-100">Closed</button>
+                <button onclick="activeBtn('all-btn')" id="all-btn" class="dynamicBtn btn btn-primary">All</button>
+                <button onclick="activeBtn('open-btn')" id="open-btn" class="dynamicBtn btn btn-base-100">Open</button>
+                <button onclick="activeBtn('close-btn')" id="close-btn" class="dynamicBtn btn btn-base-100">Closed</button>
             </div>
         </div>
     </section>
@@ -51,18 +51,18 @@
             class="bg-base-100 shadow-sm w-11/12 mx-auto flex justify-between items-center p-9 rounded-lg rounded-b-none">
             <div class="">
 
-                <div class="flex items-center gap-5">
-                    <div class="bg-[#ECE4FF] p-3 rounded-full">
-                        <img class="w-[27px] h-[27px]" src="./assets/Aperture.png" alt="">
+                <div class="md:flex md:items-center gap-5">
+                    <div class="bg-[#ECE4FF] w-[50px] h-[50px] flex justify-center items-center p-3 rounded-full">
+                        <img class="w-[27px] h-[27px] object-cover" src="./assets/Aperture.png" alt="">
                     </div>
                     <div>
-                        <h3 class="font-bold text-2xl">50 Issues</h3>
+                        <h3 class="font-bold text-2xl"><span id="total-issue">50</span> Issues</h3>
                         <p>Track and manage your project issues</p>
                     </div>
                 </div>
 
             </div>
-            <div class="flex flex-col sm:flex-row justify-between items-center gap-3">
+            <div class="flex flex-col sm:flex-row justify-between items-center gap-3 ">
                 <div class="flex items-center justify-center gap-2">
                     <img src="./assets/Open-Status.png" alt="">
                     <p>Open</p>
