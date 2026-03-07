@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Github-Issue-Tracker || Login Page</title>
+    <!-- font awesome -->
+    <!-- tailwind and daisy ui link -->
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+
+<body>
+    <section class="card bg-white shadow-2xl w-9/12 sm:w-6/12 mx-auto my-20 py-10 space-y-5">
+        <header class="px-10">
+            <div class="flex flex-col items-center text-center">
+                <img src="./assets/github-logo.png" alt="">
+                <h2 class="font-semibold md:font-bold text-xl md:text-4xl ">GitHub Issues Tracker</h2>
+                <p class="text-sm md:text-xl">Sign in to manage your issues</p>
+            </div>
+        </header>
+        <section class="px-10">
+            <fieldset class="fieldset bg-base-200 border-base-300 rounded-box  border p-4 mx-auto">
+
+                <label class="label font-black">Username</label>
+                <input type="text" class="input w-full" placeholder="Enter Username" />
+                <p class="text-sm text-primary font-semibold">Default: admin</p>
+
+                <label class="label font-black">Password</label>
+                <input type="password" class="input w-full" placeholder="Enter Your Password" />
+                <p class="text-sm text-primary font-semibold">Default: admin123</p>
+
+                <button class="btn btn-primary mt-4">Sign In</button>
+            </fieldset>
+        </section>
+        <div class="px-10 w-full flex flex-col">
+            <div class="divider ">OR</div>
+        </div>
+        <div class="px-10">
+            <p class="text-center mb-3">Demo Credentials</p>
+            <div class="card bg-base-200 border-base-300 rounded-box  border text-center py-10">
+                <p><span class="font-bold">Username :</span> admin</p>
+                <p><span class="font-bold">Password :</span> admin123</p>
+            </div>
+        </div>
+    </section>
+
+</body>
+
+</html>
