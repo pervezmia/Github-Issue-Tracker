@@ -143,7 +143,7 @@ const renderingAllData = async (allData) => {
 }
 
 const loadingShow = () => {
-    cardContainer.innerHTML ="";
+    // cardContainer.innerHTML ="";
     loadingSnipper.classList.remove("hidden");
 }
 const loadingHide = () => {
