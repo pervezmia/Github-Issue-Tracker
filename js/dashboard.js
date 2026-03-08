@@ -6,6 +6,7 @@ const loadingSnipper = document.getElementById("loadingSnipper");
 
 const cardContainer = document.getElementById("card-container");
 
+const modalContainer = document.getElementById("modal-container");
 
 const btnContainer = document.getElementById("btn-container");
 const allIssues = [];
@@ -73,7 +74,7 @@ const renderingAllData = async (allData) => {
         labels.push(...item.labels);
         // console.log(labels);
         const div = document.createElement("div");
-        div.classList = "flex flex-warp gap-4"
+        div.classList = "flex flex-col md:flex-row gap-4"
 
         labels.forEach(label => {
             const btn = document.createElement("div");
@@ -96,7 +97,7 @@ const renderingAllData = async (allData) => {
                                 ${item.priority}
                             </div>
                         </div>
-                        <h2 class="card-title">${item.title}</h2>
+                        <h2 onclick="openModalTree('${item.id}')" class="card-title cursor-pointer hover:text-blue-500">${item.title}</h2>
                         <p class="line-clamp-2">${item.description}</p>
                         <div class="flex flex-col">
                             <div class="badge badge-warning mb-3">
@@ -133,5 +134,78 @@ const loadingHide = () => {
     loadingSnipper.classList.add("hidden");
 }
 
+// modal open when click title of a card
+const openModalTree = async (treeId) => {
+    const res = await fetch (`https://phi-lab-server.vercel.app/api/v1/lab/issue/${treeId}`)
+    const data = await res.json();
+    // console.log(data.data);
+    const issuesDetails = data.data;
+    showModalInfo(issuesDetails);
+    // console.log(issuesDetails);
+    
+    issueCardInfo.showModal();
+}
 
+
+const showModalInfo = async (item) => {
+    modalContainer.innerHTML = "";
+    const labels = [];
+        labels.push(...item.labels);
+        // console.log(labels);
+        const div = document.createElement("div");
+        div.classList = "flex flex-col md:flex-row gap-4"
+
+        labels.forEach(label => {
+            const btn = document.createElement("div");
+            btn.classList = "badge badge-warning";
+            btn.innerHTML = label;
+            // console.log(btn);
+            div.appendChild(btn);
+            console.log(div);
+        })
+
+        const card = document.createElement("div");
+        card.className = "card bg-base-100 shadow-sm ";
+        
+        card.innerHTML = `
+                <div class="card bg-base-100 shadow-sm border-t-5 ${item.status === "open" ? "border-green-500": "border-violet-500"}">
+
+                    <div class="card-body">
+                        <div class="flex justify-between items-center">
+                            <img src="${item.status === "open" ? "./assets/Open-Status.png" : "./assets/Closed- Status .png"}"  alt="">
+                            <div class="badge badge-warning">
+                                ${item.priority}
+                            </div>
+                        </div>
+                        <h2 onclick="openModalTree('${item.id}')" class="card-title">${item.title}</h2>
+                        <p class="">${item.description}</p>
+                        <div class="flex flex-col">
+                            <div class="badge badge-warning mb-3">
+                                ${item.status}
+                            </div>
+                            <div class="labels-container">
+                                
+                                
+                                
+                            </div>
+                        </div>
+                        
+                    </div>
+                    <hr class="text-base-300">
+                    <div class="p-4">
+                        <div >
+                            <p>${item.author}</p>
+                            <p>${item.assignee}</p>
+                            </div>
+                            <div>
+                            <p>${item.createdAt}</p>
+                            <p>${item.updatedAt}</p>
+                        </div>
+                    </div>
+        `
+        card.querySelector(".labels-container").appendChild(div);
+        modalContainer.appendChild(card);
+        // modalContainer.appendChild(div);
+        card.querySelector(".labels-container").appendChild(div);
+}
 loadAllData();

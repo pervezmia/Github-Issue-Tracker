@@ -23,7 +23,7 @@
                     <a class="font-bold text-2xl">Github-Issue-Tracker</a>
                 </div>
                 <div class="flex gap-2">
-                    <input type="text" placeholder="Search" class="input input-bordered w-24 md:w-auto"/>
+                    <input type="text" placeholder="Search" class="input input-bordered w-24 md:w-auto" />
                     <div>
 
                         <button class="btn btn-primary"><i class="fa-solid fa-plus"></i>New Issue</button>
@@ -40,7 +40,8 @@
             <div id="btn-container">
                 <button onclick="activeBtn('all-btn')" id="all-btn" class="dynamicBtn btn btn-primary">All</button>
                 <button onclick="activeBtn('open-btn')" id="open-btn" class="dynamicBtn btn btn-base-100">Open</button>
-                <button onclick="activeBtn('close-btn')" id="close-btn" class="dynamicBtn btn btn-base-100">Closed</button>
+                <button onclick="activeBtn('close-btn')" id="close-btn"
+                    class="dynamicBtn btn btn-base-100">Closed</button>
             </div>
         </div>
     </section>
@@ -80,7 +81,7 @@
         <div class="bg-base-100 shadow-sm w-11/12 mx-auto rounded-b-xl">
             <div id="card-container" class="grid grid-cols-1 sm:grid-cols-3 p-5 gap-5">
                 <!-- card -->
-                
+
                 <!-- <div class="card bg-base-100 shadow-sm  ">
 
                     <div class="card-body">
@@ -169,37 +170,47 @@
         </div>
     </section>
 
+    <section class="w-9/12 mx-auto my-1">
+        <!-- Open the modal using ID.showModal() method -->
 
-<!-- assignee
-: 
-""
-author
-: 
-"sarah_dev"
-createdAt
-: 
-"2024-01-14T14:20:00Z"
-description
-: 
-"Users are requesting a dark mode option. This would improve accessibility and user experience."
-id
-: 
-2
-labels
-: 
-(2) ['enhancement', 'good first issue']
-priority
-: 
-"medium"
-status
-: 
-"open"
-title
-: 
-"Add dark mode support"
-updatedAt
-: 
-"2024-01-16T09:15:00Z" -->
+        <dialog id="issueCardInfo" class="modal">
+            <div  class="modal-box">
+                <div id="modal-container">
+                    <div class="card-body">
+                        <div class="flex justify-between items-center">
+                            <img src="./assets/Open-Status.png" alt="">
+                            <div class="badge badge-warning">
+                                Warning
+                            </div>
+                        </div>
+                        <h2 class="card-title">Fix navigation menu on mobile devices</h2>
+                        <p class="line-clamp-2">The navigation menu doesn't collapse properly on mobile devices The
+                            navigation menu doesn't collapse properly on mobile devices</p>
+                        <div class="flex flex-col md:flex-row sm:justify-start gap-2.5">
+                            <div class="badge badge-warning">
+                                Warning
+                            </div>
+                            <div class="badge badge-warning">
+                                Warning
+                            </div>
+                        </div>
+
+                    </div>
+                    <hr class="text-base-300">
+                    <div class="card-body rounded-2xl">
+                        <p>#1 by john_doe</p>
+                        <p>07/03/2024</p>
+                    </div>
+                </div>
+                <div class="modal-action">
+                    <form method="dialog">
+                        <!-- if there is a button in form, it will close the modal -->
+                        <button class="btn">Close</button>
+                    </form>
+                </div>
+            </div>
+        </dialog>
+    </section>
 
 
     <script src="./js/dashboard.js"></script>
