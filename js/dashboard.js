@@ -11,6 +11,8 @@ const modalContainer = document.getElementById("modal-container");
 const searchInput = document.getElementById("searchInput");
 const searchBtn = document.getElementById("searchBtn");
 
+const noIssue = document.getElementById("noIssue");
+
 const btnContainer = document.getElementById("btn-container");
 const allIssues = [];
 
@@ -68,6 +70,7 @@ const loadAllData = async () => {
 
 /* show card in browser by js*/
 const renderingAllData = async (allData) => {
+    noIssue.innerHTML = "";
     cardContainer.innerHTML = "";
     totalIssue.innerText = allData.length;
     // console.log(totalIssue);
@@ -80,13 +83,13 @@ const renderingAllData = async (allData) => {
         div.classList = "flex flex-col md:flex-row gap-4"
 
         labels.forEach(label => {
-            console.log(label);
+            // console.log(label);
             const btn = document.createElement("div");
-            if(label === "bug"){
+            if (label === "bug") {
                 btn.classList = `badge bg-amber-400`;
             } else if (label === "enhancement") {
                 btn.classList = "badge bg-red-200";
-            } else if (label === "help wanted"){
+            } else if (label === "help wanted") {
                 btn.classList = "badge bg-green-300";
             } else {
                 btn.classList = "badge bg-[#FDE68A]";
@@ -105,14 +108,14 @@ const renderingAllData = async (allData) => {
                     <div class="card-body">
                         <div class="flex justify-between items-center">
                             <img src="${item.status === "open" ? "./assets/Open-Status.png" : "./assets/Closed- Status .png"}"  alt="">
-                            <div class="badge ${item.priority === "low"? "bg-gray-200" : item.priority === "medium" ? "bg-blue-200" : "bg-amber-200"}">
+                            <div class="badge ${item.priority === "low" ? "bg-gray-200" : item.priority === "medium" ? "bg-blue-200" : "bg-amber-200"}">
                                <span class="font-semibold">Priority :</span> ${item.priority}
                             </div>
                         </div>
                         <h2 onclick="openModalTree('${item.id}')" class="card-title cursor-pointer hover:text-blue-500">${item.title}</h2>
                         <p class="line-clamp-2">${item.description}</p>
                         <div class="flex flex-col">
-                            <div class="badge ${item.status === "open"? "bg-green-200" : "bg-violet-200"} mb-3">
+                            <div class="badge ${item.status === "open" ? "bg-green-200" : "bg-violet-200"} mb-3">
                                 ${item.status}
                             </div>
                             <div class="labels-container">
@@ -140,6 +143,7 @@ const renderingAllData = async (allData) => {
 }
 
 const loadingShow = () => {
+    cardContainer.innerHTML ="";
     loadingSnipper.classList.remove("hidden");
 }
 const loadingHide = () => {
@@ -162,6 +166,7 @@ const openModalTree = async (treeId) => {
 
 
 const showModalInfo = async (item) => {
+    noIssue.innerHTML = "";
     modalContainer.innerHTML = "";
     const labels = [];
     labels.push(...item.labels);
@@ -173,16 +178,16 @@ const showModalInfo = async (item) => {
         const btn = document.createElement("div");
         // btn.classList = "badge badge-warning";
 
-        if(label === "bug"){
-                btn.classList = `badge bg-amber-400`;
+        if (label === "bug") {
+            btn.classList = `badge bg-amber-400`;
 
-            } else if (label === "enhancement") {
-                btn.classList = "badge bg-red-200";
-            } else if (label === "help wanted"){
-                btn.classList = "badge bg-green-300";
-            } else {
-                btn.classList = "badge bg-[#FDE68A]";
-            }
+        } else if (label === "enhancement") {
+            btn.classList = "badge bg-red-200";
+        } else if (label === "help wanted") {
+            btn.classList = "badge bg-green-300";
+        } else {
+            btn.classList = "badge bg-[#FDE68A]";
+        }
 
         btn.innerHTML = label;
         // console.log(btn);
@@ -199,14 +204,14 @@ const showModalInfo = async (item) => {
                     <div class="card-body">
                         <div class="flex justify-between items-center">
                             <img src="${item.status === "open" ? "./assets/Open-Status.png" : "./assets/Closed- Status .png"}"  alt="">
-                            <div class="badge ${item.priority === "low"? "bg-gray-200" : item.priority === "medium"? "bg-blue-200" : "bg-amber-200"}"><span class="font-semibold">Priority :</span>
+                            <div class="badge ${item.priority === "low" ? "bg-gray-200" : item.priority === "medium" ? "bg-blue-200" : "bg-amber-200"}"><span class="font-semibold">Priority :</span>
                                 ${item.priority}
                             </div>
                         </div>
                         <h2 onclick="openModalTree('${item.id}')" class="card-title">${item.title}</h2>
                         <p class="">${item.description}</p>
                         <div class="flex flex-col">
-                            <div class="badge mb-3 ${item.status === "open"? "bg-green-200" : "bg-violet-200"}">
+                            <div class="badge mb-3 ${item.status === "open" ? "bg-green-200" : "bg-violet-200"}">
                                 ${item.status}
                             </div>
                             <div class="labels-container">
@@ -238,25 +243,45 @@ const showModalInfo = async (item) => {
 searchBtn.addEventListener("click", () => {
     const searchInputValue = searchInput.value.trim().toLowerCase()
     searchInput.value = "";
-        
-        // console.log(searchInputValue);
-        searchFunction(searchInputValue);
-        
 
-    })
+    // console.log(searchInputValue);
+    searchFunction(searchInputValue);
+    activeBtn("all-btn");
+    
+    
+    // const matchingData = data.data;
+    // console.log(data.data);
+    
+})
 
 const searchFunction = async (searchValues) => {
+    console.log(searchValues);
     loadingShow();
     const res = await fetch(`https://phi-lab-server.vercel.app/api/v1/lab/issues/search?q=${searchValues}`);
     const data = await res.json();
     loadingHide();
-    
-    // console.log();
     renderingAllData(data.data);
 
-    
+    // console.log(allIssues.length);
+    if(searchValues === "" || data.data.length <=0 ){
+            noIssuesFunction();
+        }
+
+
+
 }
 
+
+const noIssuesFunction = () => {
+    noIssue.innerHTML = "";
+    cardContainer.innerHTML = "";
+    const issueCard = document.createElement("div");
+    issueCard.className = "card card-body border-2 bg-red-100";
+    issueCard.innerHTML = `
+        <h1 class="text-4xl font-bold text-center text-red-300 ">! No Issues here</h1>
+    `
+    noIssue.appendChild(issueCard);
+}
 
 
 loadAllData();
